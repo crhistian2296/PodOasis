@@ -1,20 +1,31 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Roboto } from "next/font/google";
+import { Providers } from "@/components/layout/providers";
 import "./globals.css";
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "PodOasis",
   description: "Mini-aplicación para escuchar podcasts musicales",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es">
+    <html lang="es" className={roboto.variable}>
       <body>
-        <main>{children}</main>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
