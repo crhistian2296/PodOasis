@@ -29,3 +29,6 @@ export { enrichPodcastDetail } from "./enrich-podcast-detail";
 export { fetchExternalJson } from "./fetch-external";
 export { loadPodcastDetail, loadPodcasts } from "./load-podcasts";
 export type * from "./types";
+
+export { getQueryClient, queryPersister } from "./query-client";
+export { QUERY_TTL_MS } from "./constants";
