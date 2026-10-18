@@ -3,3 +3,8 @@
 @import "./shared/container.css";
 @import "./shared/button.css";
 @import "./shared/skeleton.css";
+@import "./shared/detail-skeleton.css";
+@import "./shared/load-error.css";
+@import "./catalog/form.css";
+@import "./catalog/catalog.css";
+@import "./catalog/podcast-card.css";
