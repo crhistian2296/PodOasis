@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 export function AppHeader() {
   return (
@@ -9,6 +10,9 @@ export function AppHeader() {
         <Link href="/" className="app-header__logo">
           PodOasis
         </Link>
+        <div className="app-header__actions">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

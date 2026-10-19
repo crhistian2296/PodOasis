@@ -11,5 +11,4 @@
 @import "./shared/detail-layout.css";
 @import "./podcast/sidebar.css";
 @import "./podcast/episode-panel.css";
-@import "./shared/rich-text.css";
-@import "./episode/episode-detail.css";
+@import "./layout/theme-toggle.css";

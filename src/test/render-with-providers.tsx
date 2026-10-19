@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, type RenderOptions } from "@testing-library/react";
 import type { ReactElement, ReactNode } from "react";
-import { CatalogProvider } from "@/context";
+import { CatalogProvider, ThemeProvider } from "@/context";
 
 function createTestQueryClient() {
   return new QueryClient({
@@ -23,7 +23,9 @@ function AllProviders({
 }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <CatalogProvider>{children}</CatalogProvider>
+      <ThemeProvider>
+        <CatalogProvider>{children}</CatalogProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
