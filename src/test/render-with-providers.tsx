@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, type RenderOptions } from "@testing-library/react";
 import type { ReactElement, ReactNode } from "react";
-import { CatalogProvider, ThemeProvider } from "@/context";
+import { CatalogProvider, NavigationProvider, ThemeProvider } from "@/context";
 
 function createTestQueryClient() {
   return new QueryClient({
@@ -14,6 +14,10 @@ function createTestQueryClient() {
   });
 }
 
+type WrapperOptions = {
+  queryClient?: QueryClient;
+};
+
 function AllProviders({
   children,
   queryClient,
@@ -24,7 +28,9 @@ function AllProviders({
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <CatalogProvider>{children}</CatalogProvider>
+        <NavigationProvider>
+          <CatalogProvider>{children}</CatalogProvider>
+        </NavigationProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
@@ -32,7 +38,7 @@ function AllProviders({
 
 export function renderWithProviders(
   ui: ReactElement,
-  options?: RenderOptions & { queryClient?: QueryClient },
+  options?: RenderOptions & WrapperOptions,
 ) {
   const { queryClient: optionsQueryClient, ...renderOptions } = options ?? {};
   const queryClient = optionsQueryClient ?? createTestQueryClient();
