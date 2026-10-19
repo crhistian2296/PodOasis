@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
-import { AppHeader, Providers, ThemeScript } from "@/components/layout";
+import {
+  AppHeader,
+  PageTransition,
+  Providers,
+  ThemeScript,
+} from "@/components";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -28,7 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <Providers>
           <AppHeader />
-          <main>{children}</main>
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
         </Providers>
       </body>
     </html>
