@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
-import { AppHeader, Providers } from "@/components/layout";
+import { AppHeader, Providers, ThemeScript } from "@/components/layout";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -21,7 +21,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={roboto.variable}>
+    <html lang="es" className={roboto.variable} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <Providers>
           <AppHeader />

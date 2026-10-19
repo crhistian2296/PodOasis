@@ -2,7 +2,7 @@
 
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import type { ReactNode } from "react";
-import { CatalogProvider } from "@/context";
+import { CatalogProvider, ThemeProvider } from "@/context";
 import { QUERY_TTL_MS, getQueryClient, queryPersister } from "@/lib";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -17,7 +17,9 @@ export function Providers({ children }: { children: ReactNode }) {
         buster: "podoasis-v1",
       }}
     >
-      <CatalogProvider>{children}</CatalogProvider>
+      <ThemeProvider>
+        <CatalogProvider>{children}</CatalogProvider>
+      </ThemeProvider>
     </PersistQueryClientProvider>
   );
 }
