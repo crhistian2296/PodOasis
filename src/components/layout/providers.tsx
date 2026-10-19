@@ -2,7 +2,7 @@
 
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import type { ReactNode } from "react";
-import { CatalogProvider, ThemeProvider } from "@/context";
+import { CatalogProvider, NavigationProvider, ThemeProvider } from "@/context";
 import { QUERY_TTL_MS, getQueryClient, queryPersister } from "@/lib";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -18,7 +18,9 @@ export function Providers({ children }: { children: ReactNode }) {
       }}
     >
       <ThemeProvider>
-        <CatalogProvider>{children}</CatalogProvider>
+        <NavigationProvider>
+          <CatalogProvider>{children}</CatalogProvider>
+        </NavigationProvider>
       </ThemeProvider>
     </PersistQueryClientProvider>
   );
